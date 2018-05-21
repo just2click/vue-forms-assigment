@@ -13,18 +13,7 @@
                     <div class="form-group">
                         <label for="fullName">Full Name</label>
                         <div class="row">
-                            <div class="col-xs-12 col-sm-8 col-md-6">
-                                <input type="text"
-                                        id="firstName"
-                                        class="form-control"
-                                        v-model.lazy="userData.firstName">
-                            </div>
-                            <div class="col-xs-12 col-sm-8 col-md-6">
-                                <input type="text"
-                                        id="lastName"
-                                        class="form-control"
-                                        v-model.lazy="userData.lastName">
-                            </div>
+                            <app-full-name v-model="userData.fullName"></app-full-name>
                         </div>
                     </div>
                     <div class="form-group">
@@ -89,7 +78,7 @@
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: {{ userData.firstName }} {{ userData.lastName }}</p>
+                        <p>Full Name: {{ userData.fullName }}</p>
                         <p>Mail: {{ userData.email }}</p>
                         <p>Password: {{ userData.password }}</p>
                         <p>Store in Database?: {{ storeData }}</p>
@@ -101,12 +90,16 @@
 </template>
 
 <script>
+    import FullName from './FullName.vue';
+
     export default {
+        components: {
+            appFullName: FullName
+        },
         data () {
             return {
                 userData: {
-                    firstName: '',
-                    lastName: '',
+                    fullName: 'Dror Avidov',
                     email: '',
                     password: ''
                 },
